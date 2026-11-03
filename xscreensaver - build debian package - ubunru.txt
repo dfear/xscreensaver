@@ -1,0 +1,23 @@
+download
+--------------
+cd ~/Downloads	
+wget https://www.jwz.org/xscreensaver/xscreensaver-6.17.tar.gz
+
+extract
+=======
+tar zxvf xscreensaver-6.17.tar.gz
+cd ./xscreensaver-6.17/
+
+install dependencies
+====================
+1) sudo apt install build-essentials
+2)
+	a) sudo apt-install debhelper-compat autotools-dev perl pkg-config gettext intltool libx11-dev libxext-dev libxi-dev libxt-dev libxft-dev libxinerama-dev libxrandr-dev libxxf86vm-dev libgl-dev libglu-dev libgle-dev libgtk-3-dev libgdk-pixbuf-2.0-dev libjpeg-dev libxml2-dev libpam-dev libsystemd-dev libwayland-dev
+or
+	b) sudo apt build-dep .
+
+build
+=====
+3) ./configure --prefix=/usr
+4) make tar
+5) make deb
