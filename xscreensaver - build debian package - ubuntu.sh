@@ -4,30 +4,46 @@ set -e
 echo "APT::Get::Assume-Yes=yes" > /tmp/_tmp_apt.conf
 export APT_CONFIG=/tmp/_tmp_apt.conf
 
-cd ~/Downloads
-wget https://www.jwz.org/xscreensaver/xscreensaver-6.17.tar.gz
+LATEST_DOWNLOAD_FILENAME=`curl -s -A "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36" https://www.jwz.org/xscreensaver/download.html | grep "xscreensaver-" | grep "tar.gz" | cut -d '"' -f 4 | head -n 1`
+LATEST_DOWNLOAD_URL_BASEPATH="https://www.jwz.org/xscreensaver/"
+LATEST_DOWNLOAD_URL=$LATEST_DOWNLOAD_URL_BASEPATH$LATEST_DOWNLOAD_FILENAME
+DOWNLOAD_FOLDER="$HOME/Downloads"
+#DOWNLOAD_FOLDER="."
+DOWNLOADED_FILEPATH="${DOWNLOAD_FOLDER}/${LATEST_DOWNLOAD_FILENAME}"
+EXTRACTED_FOLDER_NAME=`basename -s .tar.gz ${LATEST_DOWNLOAD_FILENAME}`
+EXTRACTED_FOLDERPATH="${DOWNLOAD_FOLDER}/${EXTRACTED_FOLDER_NAME}/"
 
-if test -f ~/Downloads/xscreensaver-6.17.tar.gz; then
+cd $DOWNLOAD_FOLDER
+echo $LATEST_DOWNLOAD_URL
+wget $LATEST_DOWNLOAD_URL
+
+echo $EXTRACTED_FOLDER_NAME
+echo $EXTRACTED_FOLDERPATH
+#exit
+
+if test -f "${DOWNLOADED_FILEPATH}"; then
   echo "xscreensaver tarball exists. Extracting..."
-  tar zxvf xscreensaver-6.17.tar.gz
-  cd ./xscreensaver-6.17/
+  tar zxf "${DOWNLOADED_FILEPATH}"
 fi
+
+#exit
 
 sudo apt update
 sudo apt upgrade
 sudo apt install build-essential
 
-if test -d ~/Downloads/xscreensaver-6.17/; then
+if test -d "${EXTRACTED_FOLDERPATH}"; then
+  cd "${EXTRACTED_FOLDERPATH}"
   echo "xscreensaver tarball extracted folder exists. Installing dependencies..."
   sudo apt build-dep .
 fi
 
-if test -f ~/Downloads/xscreensaver-6.17/configure.ac; then
+if test -f "configure.ac"; then
   echo "configure file exists. run ./configure..."
   ./configure --prefix=/usr
 fi
 
-if test -f ~/Downloads/xscreensaver-6.17/Makefile.in; then
+if test -f "Makefile.in"; then
   echo "Makefile exists. Building binaries (tar/deb)..."
   make tar
   make deb
