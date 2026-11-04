@@ -11,3 +11,17 @@ This XScreenSaver repository (on GitHub) has nothing to do with [jwz](https://ww
 ## Purpose
 
 The purpose of this repository is to serve as a place to download a script that can be used on Debian or Ubuntu to build a debian package from the official source tarball.
+
+## Notes
+
+### On Ubuntu
+
+You might need to uninstall packages before you can install `xscreensaver-*.*.deb`
+
+Uninstall all xscreensaver packages such as:
+`xscreensaver-data`
+`xscreensaver-glextras`
+etc
+
+Also you may need to install:
+`attr` or `xattr`

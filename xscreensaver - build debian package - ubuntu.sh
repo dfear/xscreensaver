@@ -13,6 +13,8 @@ if test -f ~/Downloads/xscreensaver-6.17.tar.gz; then
   cd ./xscreensaver-6.17/
 fi
 
+sudo apt update
+sudo apt upgrade
 sudo apt install build-essential
 
 if test -d ~/Downloads/xscreensaver-6.17/; then
