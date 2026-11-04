@@ -30,12 +30,12 @@ fi
 
 sudo apt update
 sudo apt upgrade
-sudo apt install build-essential
+sudo apt-get install -y build-essential
 
 if test -d "${EXTRACTED_FOLDERPATH}"; then
   cd "${EXTRACTED_FOLDERPATH}"
   echo "xscreensaver tarball extracted folder exists. Installing dependencies..."
-  sudo apt build-dep .
+  sudo apt-get build-dep -y .
 fi
 
 if test -f "configure.ac"; then
