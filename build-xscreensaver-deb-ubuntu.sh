@@ -1,9 +1,6 @@
 #!/bin/sh
 set -e
 
-echo "APT::Get::Assume-Yes=yes" > /tmp/_tmp_apt.conf
-export APT_CONFIG=/tmp/_tmp_apt.conf
-
 LATEST_DOWNLOAD_FILENAME=`curl -s -A "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36" https://www.jwz.org/xscreensaver/download.html | grep "xscreensaver-" | grep "tar.gz" | cut -d '"' -f 4 | head -n 1`
 LATEST_DOWNLOAD_URL_BASEPATH="https://www.jwz.org/xscreensaver/"
 LATEST_DOWNLOAD_URL=$LATEST_DOWNLOAD_URL_BASEPATH$LATEST_DOWNLOAD_FILENAME
