@@ -22,7 +22,6 @@ if test -f "${DOWNLOADED_FILEPATH}"; then
   echo "xscreensaver tarball exists. Extracting..."
   tar zxf "${DOWNLOADED_FILEPATH}"
 fi
-
 #exit
 
 sudo apt update
