@@ -23,5 +23,5 @@ Uninstall all xscreensaver packages such as:
 `xscreensaver-glextras`
 etc
 
-Also you may need to install:
+Also may also need to install:
 `attr` or `xattr`
