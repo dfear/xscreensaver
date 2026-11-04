@@ -25,3 +25,15 @@ etc
 
 Also may also need to install:
 `attr` or `xattr`
+
+## todo
+
+Add support for:
+
+1. checking if a tarball already exists.
+2. checking if the latest tarball is newer than the existing tarball.
+3. if latest tarball is newer than exising,
+   1. delete existing tarball.
+   2. delete existing extracted tarball folder.
+   3. then download latest tarball.
+4. if existing tarball is the same as latest tarball, exit the script.
