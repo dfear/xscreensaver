@@ -64,7 +64,12 @@ sudo apt-get install -y build-essential fakeroot debhelper
 if test -d "${EXTRACTED_FOLDERPATH}"; then
   cd "${EXTRACTED_FOLDERPATH}"
   echo "xscreensaver tarball extracted folder exists. Installing dependencies..."
-  sudo apt-get build-dep -y .
+  if ! sudo apt-get build-dep -y . ; then
+    echo "ERROR: Failed to get build dependencies."
+    echo "Either the debian folder is not in the tarball or 'Source code' (deb-src) are repositories enabled"
+    echo "Enabling 'Source code' (deb-src) repositories in your Software & Updates settings may fix this problem."
+    exit 1
+  fi
 fi
 
 if test -f "configure"; then
