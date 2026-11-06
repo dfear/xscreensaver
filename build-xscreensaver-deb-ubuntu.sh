@@ -66,7 +66,7 @@ if test -d "${EXTRACTED_FOLDERPATH}"; then
   echo "xscreensaver tarball extracted folder exists. Installing dependencies..."
   if ! sudo apt-get build-dep -y . ; then
     echo "ERROR: Failed to get build dependencies."
-    echo "Either the debian folder is not in the tarball or 'Source code' (deb-src) are repositories enabled"
+    echo "Either the debian folder is not in the tarball or 'Source code' (deb-src) repositories are disabled."
     echo "Enabling 'Source code' (deb-src) repositories in your Software & Updates settings may fix this problem."
     exit 1
   fi
