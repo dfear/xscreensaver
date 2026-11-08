@@ -8,13 +8,16 @@ GREEN='\033[0;32m'
 BRORANGE='\033[0;33m'
 
 echo -e "${GREEN}Updating repositories..."
+echo -e "${WHITE}"
 #exit
 sudo apt-get update
 
 echo -e "${GREEN}Updating packages..."
-sudo apt-get upgrade -y
+echo -e "${WHITE}"
+sudo apt-get upgra]de -y
 
 echo -e "${GREEN}Install dependencies..."
+echo -e "${WHITE}"
 sudo apt-get install -y curl wget
 
 LATEST_DOWNLOAD_FILENAME=`curl -s -A "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36" https://www.jwz.org/xscreensaver/download.html | grep "xscreensaver-" | grep "tar.gz" | cut -d '"' -f 4 | head -n 1`
@@ -45,6 +48,7 @@ fi
 
 if ! test -f "${DOWNLOADED_FILEPATH}"; then
   echo -e "${GREEN}latest xscreensaver tarball doesn't exist. Downloading..."
+  echo -e "${WHITE}"
   wget -c "${LATEST_DOWNLOAD_URL}"
 fi
 
@@ -54,6 +58,7 @@ fi
 
 if test -d "${EXTRACTED_FOLDERPATH}"; then
   echo -e "${GREEN}Latest tarball has already been extracted."
+  echo -e "${WHITE}"
   read -p "Do you want to delete the existing folder and start over? (y/n) " yn
 
   case $yn in
@@ -68,17 +73,20 @@ fi
 
 if test -f "${DOWNLOADED_FILEPATH}"; then
   echo -e "${GREEN}xscreensaver tarball exists. Extracting..."
+  echo -e "${WHITE}"
   tar zxf "${DOWNLOADED_FILEPATH}"
   #ls -alh $EXTRACTED_FOLDERPATH
 fi
 #exit
 
 echo -e "${GREEN}Installing build dependencies..."
+echo -e "${WHITE}"
 sudo apt-get install -y build-essential fakeroot debhelper
 
 if test -d "${EXTRACTED_FOLDERPATH}"; then
   cd "${EXTRACTED_FOLDERPATH}"
   echo -e "${GREEN}xscreensaver tarball extracted folder exists. Installing dependencies..."
+  echo -e "${WHITE}"
   if ! sudo apt-get build-dep -y . ; then
     echo -e "${RED}ERROR: Failed to get build dependencies."
     echo -e "${BRORANGE}Either the debian folder is not in the tarball or 'Source code' (deb-src) repositories are disabled."
@@ -89,11 +97,13 @@ fi
 
 if test -f "configure"; then
   echo -e "${GREEN}configure file exists. run ./configure..."
+  echo -e "${WHITE}"
   ./configure --prefix=/usr
 fi
 
 if test -f "Makefile"; then
   echo -e "${GREEN}Makefile exists. Building binaries (tar/deb)..."
+  echo -e "${WHITE}"
   make tar
   make deb
 fi
