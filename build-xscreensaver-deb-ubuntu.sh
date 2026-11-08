@@ -14,7 +14,7 @@ sudo apt-get update
 
 echo -e "${GREEN}Updating packages..."
 echo -e "${WHITE}"
-sudo apt-get upgra]de -y
+sudo apt-get upgrade -y
 
 echo -e "${GREEN}Install dependencies..."
 echo -e "${WHITE}"
