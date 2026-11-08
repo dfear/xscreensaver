@@ -8,6 +8,7 @@ GREEN='\033[0;32m'
 BRORANGE='\033[0;33m'
 
 echo -e "${GREEN}Updating repositories..."
+exit
 sudo apt-get update
 
 echo -e "${GREEN}Updating packages..."
