@@ -30,6 +30,11 @@ wg: `$HOME/Downloads/xscreensaver-6.17/debian/build`.
 
 ## Notes
 
+## Which distros build OK?
+
+1. debian-live-13.7.0-amd64-gnome - YES.
+2. ubuntu-26.10-desktop-amd64.iso - NO.
+
 ### On Ubuntu
 
 You might need to uninstall packages before you can install `xscreensaver-*.*.deb`
