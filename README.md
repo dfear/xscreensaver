@@ -14,6 +14,20 @@ The purpose of this repository is to serve as a place to download a script that 
 
 The purpose of the script is to download and buid a debian package only! It does NOT install the built package or check if your system has the required dependences (for the built package).
 
+## How to use the script
+
+1. open a terminal and chnage to a directory where you want to clone this repository to.
+2. Install `git` (if you don't already have it), by typing: `sudo apt-get install -y git`
+3. clone the repository by typying: `git clone https://github.com/dfear/xscreensaver.git`
+4. If `build-xscreensaver-deb-ubuntu.sh` is not executable, make it so by typing: `chmod +x build-xscreensaver-deb-ubuntu.sh`
+5. run the script, by typing: `./build-xscreensaver-deb-ubuntu.sh`.
+
+## FAQs
+
+1. Where are the packages the script builds?
+A. They are in `<DOWNLOAD_FOLDER>/xscreensaver-<MAJOR>.<MINOR>/debian/build`.
+wg: `$HOME/Downloads/xscreensaver-6.17/debian/build`.
+
 ## Notes
 
 ### On Ubuntu
