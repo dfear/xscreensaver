@@ -3,7 +3,7 @@ set -e
 
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get install -y curl
+sudo apt-get install -y curl wget
 
 LATEST_DOWNLOAD_FILENAME=`curl -s -A "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36" https://www.jwz.org/xscreensaver/download.html | grep "xscreensaver-" | grep "tar.gz" | cut -d '"' -f 4 | head -n 1`
 LATEST_DOWNLOAD_URL_BASEPATH="https://www.jwz.org/xscreensaver/"
